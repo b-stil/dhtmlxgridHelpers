@@ -394,7 +394,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <None Include="Project_Readme.html" />
     <Content Include="Views\Shared\_DHXGridPro.cshtml" />
     <Content Include="Views\Shared\_DHXGridStandardObject.cshtml" />
     <Content Include="Views\Home\Standard.cshtml" />

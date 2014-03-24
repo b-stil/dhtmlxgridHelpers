@@ -16,5 +16,5 @@ To render the grid within the #table-demo div use this code snippet:
     vm.FixedLeftColumns = 1;
     vm.AllowColumnReorder = true;
 }
-@Html.Partial("_DXHGridStandard", vm)
+@Html.Partial("_DHXGridStandard", vm)
 ```

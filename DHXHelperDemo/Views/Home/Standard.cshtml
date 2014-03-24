@@ -1,0 +1,38 @@
+﻿@using DHXHelperDemo.Code.DHX
+@using DHXHelperDemo.Controllers
+
+@model DHXHelperDemo.Code.DHX.DHXGridVm
+@{
+    ViewBag.Title = "Demo DHX Helper";
+}
+@section Styles
+{
+    <style>
+        .dhx_header_cmenu {
+            background-color: #ffffff;
+            border: 2px outset silver;
+            z-index: 2;
+            height: 200px;
+            width: 200px;
+        }
+
+        .dhx_header_cmenu_item {
+            white-space: nowrap;
+        } 
+    </style>
+}
+
+<div>
+    <p>This is a demo of a DHX grid rendered through the C# helpers.</p>
+    <p>It uses the standard DHX initialization functionality.</p>
+</div>
+<div id="table-demo" style="height: 300px; width: 50%; float:left;"></div>
+@{
+    var vm = Html.DhxGridVm("table-demo", (HomeController h) => h.GetDemoJson());
+    vm.FixedLeftColumns = 1;
+    vm.AllowColumnReorder = true;
+    //These are only available in PRO version of dhtmlxgrid
+    //vm.AllowColumnVisibility = true;
+    //vm.AllowColumnAutoSizing = true;
+}
+@Html.Partial("_DHXGridStandard", vm)

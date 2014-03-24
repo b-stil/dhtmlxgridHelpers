@@ -1,0 +1,28 @@
+﻿@using DHXHelperDemo.Code.DHX
+@using DHXHelperDemo.Controllers
+
+@model DHXHelperDemo.Code.DHX.DHXGridVm
+@{
+    ViewBag.Title = "Demo DHX Helper";
+}
+@section Styles
+{
+    <style>
+        .dhx_header_cmenu {
+            background-color: #ffffff;
+            border: 2px outset silver;
+            z-index: 2;
+            height: 200px;
+            width: 200px;
+        }
+
+        .dhx_header_cmenu_item {
+            white-space: nowrap;
+        }
+    </style>
+}
+
+<div>
+    @Html.ActionLink("Standard Grid", "StandardGrid")<br/><br/>
+    @Html.ActionLink("Standard Grid Object Initialization", "StandardGridWithObjInit")
+</div>

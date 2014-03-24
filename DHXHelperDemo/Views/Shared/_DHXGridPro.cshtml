@@ -1,0 +1,47 @@
+﻿@using DHXHelperDemo.Code.DHX
+@model DHXHelperDemo.Code.DHX.DHXGridVm
+
+<script type="text/javascript">
+
+    var grid;
+    var mygrid;
+
+    window.onload = function() {
+
+        try {
+            grid = new dhtmlXGridObject('@Model.TargetDivID');
+            grid.setImagePath('@Url.Content("~/Scripts/dhtml/imgs/")');
+            grid.setHeader("@Html.DHXGridHeaderDefinitions(Model)");
+            grid.setColumnIds("@Html.DHXGridColumnIDDefinitions(Model)");
+            grid.setColAlign("@Html.DHXGridColumnAlignmentDefinitions(Model)");
+            grid.setInitWidths("@Html.DHXGridColumnWidthDefinitions(Model)");
+            grid.enableMultiline(true);
+            @Html.Raw(String.Format("grid.enableColumnAutoSize({0});", Model.AllowColumnAutoSizing.ToString().ToLowerInvariant()))
+            @Html.Raw((Model.AllowColumnReorder) ? String.Format("grid.enableColumnMove({0});", Model.AllowColumnReorder.ToString().ToLowerInvariant()) : "") //only avail in PRO
+            grid.init();
+            grid.setSkin("dhx_skyblue");
+            @Html.Raw((Model.FixedLeftColumns.HasValue) ? String.Format("grid.splitAt({0});", Model.FixedLeftColumns.Value) : "") //only avail in PRO
+            @Html.Raw((Model.AllowColumnVisibility) ? "grid.enableHeaderMenu();" : "") //only avail in PRO
+            grid.load('@Html.Raw(Model.AjaxUrl)', "js");
+        } catch (ex) {
+            console.log(ex);
+        }
+
+        //object intitalization
+        //debugger;
+        @*mygrid = new dhtmlXGridObject({
+            parent: '@Model.TargetDivID',
+            image_path: "@Url.Content("~/Scripts/dhtml/imgs/")",
+            skin: "dhx_skyblue",
+            columns: [@Html.DHXGridColumnDefinitions(Model)],
+            @Html.Raw("multiline:" + (Model.MultiLine ? "true,": "false,"))
+            @Html.Raw("column_move:" + (Model.ColumnReorder ? "true,": "false,"))
+            load: "@Html.Raw(Model.AjaxUrl)"
+
+        });
+        mygrid.init();
+        mygrid.load('/Scheduling/SiteAction/NewGetHistory', "js");
+        *@
+        };
+
+</script>

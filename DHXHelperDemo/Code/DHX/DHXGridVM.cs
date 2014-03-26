@@ -85,6 +85,16 @@ namespace DHXHelperDemo.Code.DHX
         /// </summary>
         public int? FixedLeftColumns { get; set; }
 
+        /// <summary>
+        /// Enable or Disable Pagination on the grid
+        /// </summary>
+        public bool AllowPagination { get; set; }
+
+        /// <summary>
+        /// Pagination Settings for the grid
+        /// </summary>
+        public PaginationSettings PaginationSettings { get; set; }
+        
         public DHXGridVm(string id, string ajaxUrl, IEnumerable<ColDef> columns, string aaSort = "")
         {
             AjaxUrl = ajaxUrl;
@@ -97,6 +107,8 @@ namespace DHXHelperDemo.Code.DHX
             AllowColumnVisibility = false;
             AllowColumnReorder = false;
             AllowColumnAutoSizing = false;
+            PaginationSettings = new PaginationSettings();
+
         }
         //////////////////END DHX specific setup
 
@@ -254,4 +266,41 @@ namespace DHXHelperDemo.Code.DHX
     {
     }
         #endregion
+
+    public class PaginationSettings
+    {
+        /// <summary>
+        /// Number of rows to display per page
+        /// </summary>
+        public int RowsPerPage { get; set; }
+        /// <summary>
+        /// Number of visible paging selectors
+        /// </summary>
+        public int VisiblePageSelectors { get; set; }
+        /// <summary>
+        /// CSS id of the paging container
+        /// </summary>
+        public string PagingContainerID { get; set; }
+        /// <summary>
+        /// CSS id of the info container
+        /// </summary>
+        public string InfoContainerID { get; set; }
+
+        public PaginationSettings()
+        {
+            RowsPerPage = 10;
+            VisiblePageSelectors = 5;
+            PagingContainerID = "paging";
+            InfoContainerID = "info";
+        }
+
+        public PaginationSettings(int rowsPerPage, int visiblePageSelectors, string pagingContainerID, string infoContainerID)
+        {
+            RowsPerPage = rowsPerPage;
+            VisiblePageSelectors = visiblePageSelectors;
+            PagingContainerID = pagingContainerID;
+            InfoContainerID = infoContainerID;
+        }
+    }
+
 }

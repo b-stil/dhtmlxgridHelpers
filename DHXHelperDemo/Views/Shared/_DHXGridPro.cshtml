@@ -16,6 +16,7 @@
             grid.setColAlign("@Html.DHXGridColumnAlignmentDefinitions(Model)");
             grid.setInitWidths("@Html.DHXGridColumnWidthDefinitions(Model)");
             grid.enableMultiline(true);
+            @Html.Raw((Model.AllowPagination) ? String.Format("grid.enablePaging(true, {0}, {1}, \"{2}\", true, \"{3}\"", Model.PaginationSettings.RowsPerPage, Model.PaginationSettings.VisiblePageSelectors, Model.PaginationSettings.PagingContainerID, Model.PaginationSettings.InfoContainerID): "")
             @Html.Raw(String.Format("grid.enableColumnAutoSize({0});", Model.AllowColumnAutoSizing.ToString().ToLowerInvariant()))
             @Html.Raw((Model.AllowColumnReorder) ? String.Format("grid.enableColumnMove({0});", Model.AllowColumnReorder.ToString().ToLowerInvariant()) : "") //only avail in PRO
             grid.init();

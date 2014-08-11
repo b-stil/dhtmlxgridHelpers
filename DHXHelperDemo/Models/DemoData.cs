@@ -23,5 +23,16 @@ namespace DHXHelperDemo.Models
             }
             return items;
         }
+
+        public IEnumerable<GridVM<DemoDHXVM>> GetObjectDemoData()
+        {
+            List<GridVM<DemoDHXVM>> items;
+            using (var reader = new StreamReader(HttpContext.Current.Server.MapPath(@"~/Content/Resources/fullJson.txt")))
+            {
+                string json = reader.ReadToEnd();
+                items = JsonConvert.DeserializeObject<List<GridVM<DemoDHXVM>>>(json);
+            }
+            return items;
+        }
     }
 }

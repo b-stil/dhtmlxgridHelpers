@@ -28,7 +28,7 @@
 </div>
 <div id="table-demo" style="height: 300px; width: 50%; float:left;"></div>
 @{
-    var vm = Html.DhxGridVm("table-demo", (HomeController h) => h.GetDemoJson());
+    var vm = Html.DhxGridVm("table-demo", (HomeController h) => h.GetObjectInitDemoJson());
     vm.FixedLeftColumns = 1;
     vm.AllowColumnReorder = true;
     //These are only available in PRO version of dhtmlxgrid

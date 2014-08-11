@@ -113,7 +113,7 @@ namespace DHXHelperDemo.Code.DHX
                 //}
 
                 //Just turn the object into a List<T> that will be JSONified
-                list.data = _queriable.ToList();
+                list.rows = _queriable.ToList();
 
                 //old code that was doing way too much to deal with the formatting of the view model
                 //that should be done when the view model is populated
@@ -132,7 +132,7 @@ namespace DHXHelperDemo.Code.DHX
             {
                 //Logger.Error(ex);
                 // Fail safe, if all else fails, return an empty list
-                emptyList.data = new List<T>();
+                emptyList.rows = new List<T>();
                 return emptyList;
             }
         }

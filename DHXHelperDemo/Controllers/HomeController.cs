@@ -32,6 +32,14 @@ namespace DHXHelperDemo.Controllers
 
             return new DHXResult<DemoDHXVM>(vm, Request, true);
         }
-        
+
+        public DHXResult<GridVM<DemoDHXVM>> GetObjectInitDemoJson()
+        {
+            var m = new DemoData();
+            var vm = m.GetObjectDemoData().AsQueryable();
+
+            return new DHXResult<GridVM<DemoDHXVM>>(vm, Request, true);
+        }
+
     }
 }
